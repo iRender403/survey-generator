@@ -1,0 +1,14 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+dist-ssr
+
+# Lock files
+pnpm-lock.yaml
+
+# Auto-generated configs
+eslint.config.js
+tsconfig*.json
+vite.config.ts
