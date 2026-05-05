@@ -5,6 +5,7 @@
 ## 技术栈
 
 - **框架**: React 19 + TypeScript
+- **UI 组件库**: Ant Design 6.x
 - **构建工具**: Vite
 - **样式方案**: SCSS (sass-embedded)
 - **代码规范**: ESLint + Prettier
