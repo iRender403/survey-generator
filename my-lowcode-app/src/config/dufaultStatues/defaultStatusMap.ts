@@ -1,2 +1,6 @@
 // 该文件用于定义默认状态的映射表
-import singleSelectDefaultSelect from "./defaultStatusMap";
+import singleSelectDefaultSelect from "./SingleSelect";
+
+export const defaultStatusMap = {
+    'single-select': singleSelectDefaultSelect,
+};

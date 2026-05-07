@@ -2,7 +2,6 @@ import { Button, Table, Space, Typography } from 'antd'
 import { PlusOutlined, AppstoreOutlined, EyeOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import type { ColumnsType } from 'antd/es/table'
 import { useNavigate } from 'react-router-dom'
-
 import './assets/css/common.scss'
 
 const { Title } = Typography
@@ -59,6 +58,7 @@ const columns: ColumnsType<SurveyData> = [
     ),
   },
 ]
+
 
 const data: SurveyData[] = [
   {

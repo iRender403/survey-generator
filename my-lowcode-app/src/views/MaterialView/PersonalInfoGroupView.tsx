@@ -1,5 +1,9 @@
+import Layout from './Layout';
+
 export default function PersonalInfoGroupView() {
   return (
-    <div>PersonalInfoGroupView</div>
+    <Layout>
+      <div>PersonalInfoGroupView</div>
+    </Layout>
   )
 }

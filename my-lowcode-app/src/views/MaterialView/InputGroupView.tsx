@@ -1,5 +1,9 @@
+import Layout from './Layout';
+
 export default function InputGroupView() {
   return (
-    <div>InputGroupView</div>
+    <Layout>
+      <div>InputGroupView</div>
+    </Layout>
   )
 }

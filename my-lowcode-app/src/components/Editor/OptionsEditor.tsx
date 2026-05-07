@@ -1,6 +1,10 @@
-import React from 'react'
+
+
 export default function OptionsEditor() {
+
   return (
-    <div>OptionsEditor</div>
+    <div>
+        选项编辑组件
+    </div>
   )
 }

@@ -1,5 +1,9 @@
+import Layout from './Layout';
+
 export default function NoteGroupView() {
   return (
-    <div>NoteGroupView</div>
+    <Layout>
+      <div>NoteGroupView</div>
+    </Layout>
   )
 }
