@@ -1,9 +1,10 @@
+import type React from 'react';
 
 export interface BaseProps {
   id: string;
   isShown: boolean;
   name: string;
-  editCom: VueComType;
+  editCom: React.FC;
 }
 
 export type StringStatusArr = string[];

@@ -1,11 +1,13 @@
-
-import { Row, Col } from 'antd'
-
-
-
+import { Row, Col } from 'antd';
+import { Outlet } from 'react-router-dom';
+import { useAppSelector } from '@/redux/hooks';
 export default function Layout({ children }) {
+  const singleSelectStatues = useAppSelector(
+    (state) => state.selectStatus.com['single-select'].status,
+  );
+  console.log(singleSelectStatues);
   return (
-    <Row style={{ width: '100%'}}>
+    <Row style={{ width: '100%' }}>
       {/* 左侧组件列表 */}
       <Col
         style={{
@@ -31,7 +33,7 @@ export default function Layout({ children }) {
           backgroundColor: '#fff',
         }}
       >
-       
+          <Outlet context={{...singleSelectStatues,serialNum: 1}}/>
       </Col>
 
       {/* 右侧编辑面板 */}
@@ -50,5 +52,5 @@ export default function Layout({ children }) {
         <div style={{ color: '#999' }}>编辑面板内容</div>
       </Col>
     </Row>
-  )
+  );
 }
