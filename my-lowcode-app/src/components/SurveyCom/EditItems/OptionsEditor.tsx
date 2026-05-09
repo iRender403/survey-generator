@@ -1,6 +1,0 @@
-import React from 'react'
-export default function OptionsEditor() {
-  return (
-    <div>OptionsEditor</div>
-  )
-}

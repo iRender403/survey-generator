@@ -1,11 +1,23 @@
 import { Row, Col } from 'antd';
 import { Outlet } from 'react-router-dom';
 import { useAppSelector } from '@/redux/hooks';
+import EditorPanel from '@/components/SurveyCom/Editor/EditorPanel';
+import { useContext, useMemo } from 'react';
+
 export default function Layout({ children }) {
   const singleSelectStatues = useAppSelector(
     (state) => state.selectStatus.com['single-select'].status,
   );
-  console.log(singleSelectStatues);
+  const UpdateStatusContext: any = useContext(null!);
+  function updateStatus(status: any) {
+    UpdateStatusContext(status);
+  } 
+  const computedStatues = useMemo(() => {
+    return {
+      ...singleSelectStatues,
+    };
+  }, [singleSelectStatues]);
+
   return (
     <Row style={{ width: '100%' }}>
       {/* 左侧组件列表 */}
@@ -33,7 +45,7 @@ export default function Layout({ children }) {
           backgroundColor: '#fff',
         }}
       >
-          <Outlet context={{...singleSelectStatues,serialNum: 1}}/>
+        <Outlet context={{ ...singleSelectStatues, serialNum: 1 }} />
       </Col>
 
       {/* 右侧编辑面板 */}
@@ -48,8 +60,9 @@ export default function Layout({ children }) {
           flexShrink: 0,
         }}
       >
-        <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '20px' }}>编辑面板</div>
-        <div style={{ color: '#999' }}>编辑面板内容</div>
+        <UpdateStatusContext.Provider value={UpdateStatusContext}>
+          <EditorPanel statues={singleSelectStatues} />
+        </UpdateStatusContext.Provider>
       </Col>
     </Row>
   );

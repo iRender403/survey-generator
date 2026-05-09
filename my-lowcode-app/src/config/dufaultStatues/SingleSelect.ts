@@ -3,14 +3,14 @@
 // 如果使用对象来做的话,可能会导致全局的数据跟着变化,造成不同组件之间的数据联系
 import { v4 as uuidv4 } from 'uuid'
 import SigleSelect from '@/components/SurveyCom/Materials/SelectComs/SingleSelect'
-import TitleEditor from '@/components/Editor/TitleEditor'
-import DescEditor from '@/components/Editor/DescEditor'
-import OptionsEditor from '@/components/Editor/OptionsEditor'
-import PositionEditor from '@/components/Editor/PositionEditor'
-import SizeEditor from '@/components/Editor/SizeEditor'
-import WeightEditor from '@/components/Editor/WeightEditor'
-import ItalicEditor from '@/components/Editor/ItalicEditor'
-import ColorEditor from '@/components/Editor/ColorEditor'
+import TitleEditor from '@/components/SurveyCom/Editor/TitleEditor'
+import DescEditor from '@/components/SurveyCom/Editor/DescEditor'
+import OptionsEditor from '@/components/SurveyCom/Editor/OptionsEditor'
+import PositionEditor from '@/components/SurveyCom/Editor/PositionEditor'
+import SizeEditor from '@/components/SurveyCom/Editor/SizeEditor'
+import WeightEditor from '@/components/SurveyCom/Editor/WeightEditor'
+import ItalicEditor from '@/components/SurveyCom/Editor/ItalicEditor'
+import ColorEditor from '@/components/SurveyCom/Editor/ColorEditor'
 
 
 export default function () {

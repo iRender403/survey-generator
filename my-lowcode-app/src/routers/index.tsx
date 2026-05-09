@@ -13,8 +13,6 @@ import OptionSelect from '@/components/SurveyCom/Materials/SelectComs/OptionSele
 import MultiSelect from '@/components/SurveyCom/Materials/SelectComs/MultiSelect';
 import SingleSelect from '@/components/SurveyCom/Materials/SelectComs/SingleSelect.tsx';
 
-
-
 import App from '@/App';
 
 const routes: RouteObject[] = [
@@ -27,11 +25,11 @@ const routes: RouteObject[] = [
     path: '/editor',
     element: <EditorView />,
   },
-   // 组件市场
+  // 组件市场 
   {
     path: '/material',
     element: <MaterialView />,
-   
+
     children: [
       {
         index: true,
@@ -81,7 +79,7 @@ const routes: RouteObject[] = [
             path: 'multipic',
             element: <MultiPicSelect />,
           },
-        ]
+        ],
       },
       // 个人信息
       {
@@ -93,8 +91,8 @@ const routes: RouteObject[] = [
         path: 'note',
         element: <NoteGroupView />,
       },
-    ]
-  }
-]
+    ],
+  },
+];
 
 export default createBrowserRouter(routes);

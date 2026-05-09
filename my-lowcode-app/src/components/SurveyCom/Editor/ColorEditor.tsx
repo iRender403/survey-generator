@@ -1,4 +1,5 @@
 import { ColorPicker } from 'antd'
+import { useState } from 'react'
 
 interface ColorEditorProps {
   color?: string
@@ -6,6 +7,7 @@ interface ColorEditorProps {
 }
 
 export default function ColorEditor({ color = '#000000', onChange }: ColorEditorProps) {
+  
   return (
     <div>
       <label style={{ display: 'block', marginBottom: '8px' }}>颜色选择</label>
