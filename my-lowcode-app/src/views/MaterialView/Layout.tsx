@@ -2,21 +2,30 @@ import { Row, Col } from 'antd';
 import { Outlet } from 'react-router-dom';
 import { useAppSelector } from '@/redux/hooks';
 import EditorPanel from '@/components/SurveyCom/Editor/EditorPanel';
-import { useContext, useMemo } from 'react';
+import { createContext } from 'react';
+import { setTextStatue } from '@/redux/slices/schemaSlice';
+import { useAppDispatch } from '@/redux/hooks';
+
+type UpdateStatusType = (type: string, payload: string | number | object) => void;
+const UpdateStatusContext = createContext<UpdateStatusType | null>(null);
+
+export { UpdateStatusContext };
 
 export default function Layout({ children }) {
   const singleSelectStatues = useAppSelector(
     (state) => state.selectStatus.com['single-select'].status,
   );
-  const UpdateStatusContext: any = useContext(null!);
-  function updateStatus(status: any) {
-    UpdateStatusContext(status);
-  } 
-  const computedStatues = useMemo(() => {
-    return {
-      ...singleSelectStatues,
-    };
-  }, [singleSelectStatues]);
+  const dispatch = useAppDispatch();
+
+  function updateStatus(type: string, payload: string | number | object) {
+    switch (type) {
+      case 'desc':
+        dispatch(setTextStatue(payload));
+        break;
+      default:
+        break;
+    }
+  }
 
   return (
     <Row style={{ width: '100%' }}>
@@ -60,7 +69,7 @@ export default function Layout({ children }) {
           flexShrink: 0,
         }}
       >
-        <UpdateStatusContext.Provider value={UpdateStatusContext}>
+        <UpdateStatusContext.Provider value={updateStatus}>
           <EditorPanel statues={singleSelectStatues} />
         </UpdateStatusContext.Provider>
       </Col>

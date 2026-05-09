@@ -9,7 +9,13 @@ const schemaSlice = createSlice({
     }
   },
   reducers: {
+    setTextStatue(state, {payload}) {
+      // 更新描述状态
+      state.com['single-select'].status.desc.status = payload;
+    }
   },
 })
 
+
+export const { setTextStatue } = schemaSlice.actions;
 export default schemaSlice.reducer; 

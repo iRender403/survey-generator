@@ -1,5 +1,4 @@
 import { ColorPicker } from 'antd'
-import { useState } from 'react'
 
 interface ColorEditorProps {
   color?: string
