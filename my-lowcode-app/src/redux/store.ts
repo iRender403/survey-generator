@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import schemaReducer from './slices/schemaSlice'
+import schemaReducer from './schemaSlice'
 
 
 export const store = configureStore({

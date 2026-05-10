@@ -6,23 +6,23 @@ import '@/assets/css/variables.scss';
 export default function SelectGropView() {
   const items = [
     {
-      to: '/material/select/single',
+      to: '/material/select/single-select',
       name: '单选题',
     },
     {
-      to: '/material/select/multi',
+      to: '/material/select/multi-select',
       name: '多选题',
     },
     {
-      to: '/material/select/option',
+      to: '/material/select/option-select',
       name: '下拉选择题',
     },
     {
-      to: '/material/select/singlepic',
+      to: '/material/select/single-pic-select',
       name: '图片单选题',
     },
     {
-      to: '/material/select/multipic',
+      to: '/material/select/multi-pic-select',
       name: '图片多选题',
     },
   ];

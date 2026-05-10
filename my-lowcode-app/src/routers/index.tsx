@@ -12,9 +12,19 @@ import MultiPicSelect from '@/components/SurveyCom/Materials/SelectComs/MultiPic
 import OptionSelect from '@/components/SurveyCom/Materials/SelectComs/OptionSelect';
 import MultiSelect from '@/components/SurveyCom/Materials/SelectComs/MultiSelect';
 import SingleSelect from '@/components/SurveyCom/Materials/SelectComs/SingleSelect.tsx';
-
 import App from '@/App';
+import { store } from '@/redux/store';
+import { setSelectStatus } from '@/redux/schemaSlice';
 
+
+const capturePathLoader = ({ request }) => {
+  const url = new URL(request.url);
+  const targetPath = url.pathname; // 例如 "/dashboard"
+  const selectStatus = targetPath.split('/').pop()||"single-select";
+  // 同步派发到 Redux
+  store.dispatch(setSelectStatus(selectStatus));
+  return null; // 这个 loader 不需要给组件返回数据
+};
 const routes: RouteObject[] = [
   {
     path: '/',
@@ -57,27 +67,33 @@ const routes: RouteObject[] = [
         children: [
           {
             index: true,
-            element: <Navigate to="single" replace />,
+            element: <Navigate to="single-select" replace />,
+            loader: capturePathLoader,
           },
           {
-            path: 'single',
+            path: 'single-select',
             element: <SingleSelect />,
+            loader: capturePathLoader,
           },
           {
-            path: 'multi',
+            path: 'multi-select',
             element: <MultiSelect />,
+            loader: capturePathLoader,
           },
           {
-            path: 'option',
+            path: 'option-select',
             element: <OptionSelect />,
+            loader: capturePathLoader,
           },
           {
-            path: 'singlepic',
+            path: 'single-pic-select',
             element: <SinglePicSelect />,
+            loader: capturePathLoader,
           },
           {
-            path: 'multipic',
+            path: 'multi-pic-select',
             element: <MultiPicSelect />,
+            loader: capturePathLoader,  
           },
         ],
       },
@@ -94,5 +110,7 @@ const routes: RouteObject[] = [
     ],
   },
 ];
+
+
 
 export default createBrowserRouter(routes);

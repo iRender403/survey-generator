@@ -3,8 +3,9 @@ import { Outlet } from 'react-router-dom';
 import { useAppSelector } from '@/redux/hooks';
 import EditorPanel from '@/components/SurveyCom/Editor/EditorPanel';
 import { createContext } from 'react';
-import { setTextStatue } from '@/redux/slices/schemaSlice';
+import { setTextStatue } from '@/redux/schemaSlice';
 import { useAppDispatch } from '@/redux/hooks';
+
 
 type UpdateStatusType = (type: string, payload: string | number | object) => void;
 const UpdateStatusContext = createContext<UpdateStatusType | null>(null);
@@ -12,16 +13,22 @@ const UpdateStatusContext = createContext<UpdateStatusType | null>(null);
 export { UpdateStatusContext };
 
 export default function Layout({ children }) {
+  
+
   const singleSelectStatues = useAppSelector(
-    (state) => state.selectStatus.com['single-select'].status,
+    (state) => {
+      const currentSelectStatus = state.selectStatus.currentSelectStatus;
+      return state.selectStatus.com[currentSelectStatus]?.status;
+    }
   );
   const dispatch = useAppDispatch();
-
+  
   function updateStatus(type: string, payload: string | number | object) {
     switch (type) {
       case 'desc':
         dispatch(setTextStatue(payload));
         break;
+        
       default:
         break;
     }

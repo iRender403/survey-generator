@@ -8,6 +8,7 @@ import {
   MailOutlined,
 } from '@ant-design/icons';
 import Header from '@/components/Common/Header';
+import RouteGuard from '@/components/Common/RouteGuard';
 import '@/assets/css/index.scss';
 
 const navItems = [
@@ -53,6 +54,7 @@ export default function index() {
   return (
     <>
       <Header />
+      <RouteGuard />
       <h1 style={{ fontWeight: 100, textAlign: 'center', margin: 0, padding: '20px' }}>组件市场</h1>
       <div style={{ display: 'flex', maxWidth: '1200px', margin: '0 auto', padding: '0px' }}>
         {/* 导航 */}
