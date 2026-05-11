@@ -10,8 +10,7 @@ import { useMemo, useState } from 'react';
 import { Radio } from 'antd';
 import type { OptionsStatus } from '@/types/editProps';
 
-export default function SinglePicSelect() {
-
+export default function SigleSelect() {
   const singleSelectStatues: OptionsStatus & number = useOutletContext();
   const [value, setValue] = useState(0);
 
@@ -32,16 +31,22 @@ export default function SinglePicSelect() {
     }),
     [singleSelectStatues],
   );
-  
+
   return (
     <>
       <MaterialHeader {...computedState} />
       <div style={{ paddingTop: '10px' }}>
         <Radio.Group onChange={(e) => setValue(e.target.value)} value={value}>
-    
+          {computedState.options.map((Item, index) => {
+            return (
+            <>
+                {/* 图片单选 */}
+                ❓图片单选
+            </>
+            );
+          })}
         </Radio.Group>
       </div>
     </>
   );
 }
-

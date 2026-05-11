@@ -41,9 +41,8 @@ export default function SigleSelect() {
             return (
               <Radio 
               key={index} 
-              
               value={Item}>
-                {Item}
+                {typeof Item === 'string' ? Item : JSON.stringify(Item)}
               </Radio>
             );
           })}

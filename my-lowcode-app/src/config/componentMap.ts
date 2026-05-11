@@ -5,7 +5,7 @@ import SinglePicSelect from '@/components/SurveyCom/Materials/SelectComs/SingleP
 import MultiPicSelect from '@/components/SurveyCom/Materials/SelectComs/MultiPicSelect'
 import TitleEditor from '@/components/SurveyCom/Editor/TitleEditor'
 import DescEditor from '@/components/SurveyCom/Editor/DescEditor'
-import OptionsEditor from '@/components/SurveyCom/Editor/OptionsEditor'
+import OptionEditor from '@/components/SurveyCom/Editor/OptionEditor'
 import PositionEditor from '@/components/SurveyCom/Editor/PositionEditor'
 import SizeEditor from '@/components/SurveyCom/Editor/SizeEditor'
 import WeightEditor from '@/components/SurveyCom/Editor/WeightEditor'
@@ -25,7 +25,7 @@ export const materialComponentMap = {
 export const editorComponentMap = {
     'title-editor': TitleEditor,
     'desc-editor': DescEditor,
-    'options-editor': OptionsEditor,
+    'options-editor': OptionEditor,
     'position-editor': PositionEditor,
     'size-editor': SizeEditor,
     'weight-editor': WeightEditor,

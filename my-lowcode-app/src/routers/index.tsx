@@ -7,11 +7,11 @@ import ContactGroupView from '@/views/MaterialView/ContactGroupView';
 import SelectGropView from '@/views/MaterialView/SelectGropView';
 import NoteGroupView from '@/views/MaterialView/NoteGroupView';
 import PersonalInfoGroupView from '@/views/MaterialView/PersonalInfoGroupView';
-import SinglePicSelect from '@/components/SurveyCom/Materials/SelectComs/SinglePicSelect';
+import SinglePicSelect from '@/components/SurveyCom/Materials/SelectComs/SingleSelect';
 import MultiPicSelect from '@/components/SurveyCom/Materials/SelectComs/MultiPicSelect';
 import OptionSelect from '@/components/SurveyCom/Materials/SelectComs/OptionSelect';
 import MultiSelect from '@/components/SurveyCom/Materials/SelectComs/MultiSelect';
-import SingleSelect from '@/components/SurveyCom/Materials/SelectComs/SingleSelect.tsx';
+import SingleSelect from '@/components/SurveyCom/Materials/SelectComs/SingleSelect';
 import App from '@/App';
 import { store } from '@/redux/store';
 import { setSelectStatus } from '@/redux/schemaSlice';
@@ -68,7 +68,6 @@ const routes: RouteObject[] = [
           {
             index: true,
             element: <Navigate to="single-select" replace />,
-            loader: capturePathLoader,
           },
           {
             path: 'single-select',

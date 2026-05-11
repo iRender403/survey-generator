@@ -18,11 +18,24 @@ const schemaSlice = createSlice({
     // 更新当前选中的组件的描述状态
     setTextStatue(state, {payload}) {
       state.com[state.currentSelectStatus].status.desc.status = payload;
-    }
+    },
+    // 更新图片选项状态
+    setPicOptions(state, {payload}) {
+      state.com[state.currentSelectStatus].status.options.status = payload;
+    },
+    // 更新普通选项状态
+    setOptions(state, {payload}) {
+      state.com[state.currentSelectStatus].status.options.status = payload;
+    },
+    // 更新标题状态
+    setTitle(state, {payload}) {
+      state.com[state.currentSelectStatus].status.title.status = payload;
+    },
+
     
   },
 })
 
 
-export const { setSelectStatus, setTextStatue } = schemaSlice.actions;
+export const { setSelectStatus, setTextStatue, setPicOptions, setOptions, setTitle } = schemaSlice.actions;
 export default schemaSlice.reducer; 

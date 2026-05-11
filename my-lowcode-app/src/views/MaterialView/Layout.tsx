@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { useAppSelector } from '@/redux/hooks';
 import EditorPanel from '@/components/SurveyCom/Editor/EditorPanel';
 import { createContext } from 'react';
-import { setTextStatue } from '@/redux/schemaSlice';
+import { setTextStatue, setPicOptions, setTitle } from '@/redux/schemaSlice';
 import { useAppDispatch } from '@/redux/hooks';
 
 
@@ -21,6 +21,7 @@ export default function Layout({ children }) {
       return state.selectStatus.com[currentSelectStatus]?.status;
     }
   );
+  
   const dispatch = useAppDispatch();
   
   function updateStatus(type: string, payload: string | number | object) {
@@ -28,7 +29,12 @@ export default function Layout({ children }) {
       case 'desc':
         dispatch(setTextStatue(payload));
         break;
-        
+      case 'picOptions':
+        dispatch(setPicOptions(payload));
+        break;
+      case 'title':
+        dispatch(setTitle(payload));
+        break;
       default:
         break;
     }
@@ -47,7 +53,7 @@ export default function Layout({ children }) {
           flexShrink: 0,
         }}
       >
-        {children}
+       {children}
       </Col>
 
       {/* 中间业务组件预览 */}
@@ -56,6 +62,7 @@ export default function Layout({ children }) {
         style={{
           border: '1px solid #ebeef5',
           height: 'calc(100vh - 160px)',
+          flex:1,
           overflowY: 'auto',
           padding: '40px',
           backgroundColor: '#fff',
