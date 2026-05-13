@@ -77,7 +77,7 @@ export default function index() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 padding: '15px 10px',
-                color:"#eee",
+                color: '#eee',
                 textDecoration: 'none',
                 transition: 'all 0.3s',
                 cursor: 'pointer',

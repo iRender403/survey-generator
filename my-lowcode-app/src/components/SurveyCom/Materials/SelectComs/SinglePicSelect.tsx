@@ -1,11 +1,6 @@
 import MaterialHeader from '../../Common/MaterialsHeader';
 import { useOutletContext } from 'react-router-dom';
-import {
-  getTextStatus,
-  getStringStatus,
-  getCurrentStatus,
-  getStringStatusByCurrentStatus,
-} from '@/utils';
+import { getTextStatus, getStringStatus, getCurrentStatus, getStringStatusByCurrentStatus } from '@/utils';
 import { useMemo, useState } from 'react';
 import { Radio } from 'antd';
 import type { OptionsStatus } from '@/types/editProps';
@@ -29,7 +24,7 @@ export default function SigleSelect() {
       titleColor: getTextStatus(singleSelectStatues.titleColor),
       descColor: getTextStatus(singleSelectStatues.descColor),
     }),
-    [singleSelectStatues],
+    [singleSelectStatues]
   );
 
   return (
@@ -39,10 +34,10 @@ export default function SigleSelect() {
         <Radio.Group onChange={(e) => setValue(e.target.value)} value={value}>
           {computedState.options.map((Item, index) => {
             return (
-            <>
+              <>
                 {/* 图片单选 */}
                 ❓图片单选
-            </>
+              </>
             );
           })}
         </Radio.Group>

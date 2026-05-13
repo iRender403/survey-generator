@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { Input, Button,message } from 'antd';
+import { Input, Button, message } from 'antd';
 import { PlusOutlined, MinusCircleOutlined } from '@ant-design/icons';
 import { UpdateStatusContext } from '@/views/MaterialView/Layout';
 import type { UploadProps } from 'antd';
@@ -79,13 +79,7 @@ export default function OptionPicEditor(props: OptionPicEditorProps) {
     <div>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: 16 }}>
         <span style={{ fontSize: 16, fontWeight: 'bold', marginRight: 8 }}>题目选项</span>
-        <Button
-          type="primary"
-          shape="circle"
-          icon={<PlusOutlined />}
-          size="small"
-          onClick={handleAddOption}
-        />
+        <Button type="primary" shape="circle" icon={<PlusOutlined />} size="small" onClick={handleAddOption} />
       </div>
 
       {localOptions.map((option, index) => (

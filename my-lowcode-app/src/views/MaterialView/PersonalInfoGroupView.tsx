@@ -5,5 +5,5 @@ export default function PersonalInfoGroupView() {
     <Layout>
       <div>PersonalInfoGroupView</div>
     </Layout>
-  )
+  );
 }

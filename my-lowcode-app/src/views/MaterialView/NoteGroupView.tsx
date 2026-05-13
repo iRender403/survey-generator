@@ -5,5 +5,5 @@ export default function NoteGroupView() {
     <Layout>
       <div>NoteGroupView</div>
     </Layout>
-  )
+  );
 }

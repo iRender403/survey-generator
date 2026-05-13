@@ -1,17 +1,17 @@
-import { Button, Table, Space, Typography } from 'antd'
-import { PlusOutlined, AppstoreOutlined, EyeOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
-import type { ColumnsType } from 'antd/es/table'
-import { useNavigate } from 'react-router-dom'
-import './assets/css/common.scss'
+import { Button, Table, Space, Typography } from 'antd';
+import { PlusOutlined, AppstoreOutlined, EyeOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import type { ColumnsType } from 'antd/es/table';
+import { useNavigate } from 'react-router-dom';
+import './assets/css/common.scss';
 
-const { Title } = Typography
+const { Title } = Typography;
 
 interface SurveyData {
-  key: string
-  createDate: string
-  title: string
-  questionCount: number
-  updateDate: string
+  key: string;
+  createDate: string;
+  title: string;
+  questionCount: number;
+  updateDate: string;
 }
 
 const columns: ColumnsType<SurveyData> = [
@@ -45,10 +45,10 @@ const columns: ColumnsType<SurveyData> = [
     width: 200,
     render: (_, record) => (
       <Space size="middle">
-        <Button type="link" icon={<EyeOutlined />} size="small" >
+        <Button type="link" icon={<EyeOutlined />} size="small">
           查看问卷
         </Button>
-        <Button type="link" icon={<EditOutlined />} size="small" > 
+        <Button type="link" icon={<EditOutlined />} size="small">
           编辑
         </Button>
         <Button type="link" danger icon={<DeleteOutlined />} size="small">
@@ -57,8 +57,7 @@ const columns: ColumnsType<SurveyData> = [
       </Space>
     ),
   },
-]
-
+];
 
 const data: SurveyData[] = [
   {
@@ -68,10 +67,10 @@ const data: SurveyData[] = [
     questionCount: 8,
     updateDate: '2026/05/04\n15:25:20',
   },
-]
+];
 
 export default function App() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="mc border-box" style={{ maxWidth: 1400 }}>
@@ -89,13 +88,8 @@ export default function App() {
           </Button>
         </Space>
 
-        <Table
-          columns={columns}
-          dataSource={data}
-          bordered
-          pagination={false}
-        />
+        <Table columns={columns} dataSource={data} bordered pagination={false} />
       </div>
     </div>
-  )
+  );
 }

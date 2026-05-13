@@ -3,9 +3,8 @@ import { Outlet } from 'react-router-dom';
 import { useAppSelector } from '@/redux/hooks';
 import EditorPanel from '@/components/SurveyCom/Editor/EditorPanel';
 import { createContext } from 'react';
-import { setTextStatue, setPicOptions, setTitle } from '@/redux/schemaSlice';
+import { setTextStatue, setPicOptions, setOptions, setTitle } from '@/redux/schemaSlice';
 import { useAppDispatch } from '@/redux/hooks';
-
 
 type UpdateStatusType = (type: string, payload: string | number | object) => void;
 const UpdateStatusContext = createContext<UpdateStatusType | null>(null);
@@ -13,17 +12,13 @@ const UpdateStatusContext = createContext<UpdateStatusType | null>(null);
 export { UpdateStatusContext };
 
 export default function Layout({ children }) {
-  
+  const singleSelectStatues = useAppSelector((state) => {
+    const currentSelectStatus = state.selectStatus.currentSelectStatus;
+    return state.selectStatus.com[currentSelectStatus]?.status;
+  });
 
-  const singleSelectStatues = useAppSelector(
-    (state) => {
-      const currentSelectStatus = state.selectStatus.currentSelectStatus;
-      return state.selectStatus.com[currentSelectStatus]?.status;
-    }
-  );
-  
   const dispatch = useAppDispatch();
-  
+
   function updateStatus(type: string, payload: string | number | object) {
     switch (type) {
       case 'desc':
@@ -31,6 +26,9 @@ export default function Layout({ children }) {
         break;
       case 'picOptions':
         dispatch(setPicOptions(payload));
+        break;
+      case 'options':
+        dispatch(setOptions(payload));
         break;
       case 'title':
         dispatch(setTitle(payload));
@@ -53,7 +51,7 @@ export default function Layout({ children }) {
           flexShrink: 0,
         }}
       >
-       {children}
+        {children}
       </Col>
 
       {/* 中间业务组件预览 */}
@@ -62,7 +60,7 @@ export default function Layout({ children }) {
         style={{
           border: '1px solid #ebeef5',
           height: 'calc(100vh - 160px)',
-          flex:1,
+          flex: 1,
           overflowY: 'auto',
           padding: '40px',
           backgroundColor: '#fff',

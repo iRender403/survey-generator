@@ -1,5 +1,18 @@
 export default function MaterialsHeader(props: any) {
-  const { title, desc, options, position, titleSize, descSize, titleWeight, descWeight, titleItalic, descItalic, titleColor, descColor } = props;
+  const {
+    title,
+    desc,
+    options,
+    position,
+    titleSize,
+    descSize,
+    titleWeight,
+    descWeight,
+    titleItalic,
+    descItalic,
+    titleColor,
+    descColor,
+  } = props;
   return (
     <div style={{ marginBottom: '15px' }}>
       {/* 标题 */}
@@ -10,7 +23,7 @@ export default function MaterialsHeader(props: any) {
           margin: 0,
         }}
       >
-        {title||'无标题'}
+        {title || '无标题'}
       </h2>
       {/* 描述 */}
       <div
@@ -21,7 +34,7 @@ export default function MaterialsHeader(props: any) {
           marginTop: '5px',
         }}
       >
-        {desc||'无描述'}
+        {desc || '无描述'}
       </div>
     </div>
   );

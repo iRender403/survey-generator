@@ -1,4 +1,3 @@
-
 import Layout from './Layout';
 
 export default function ContactGroupView() {
@@ -6,5 +5,5 @@ export default function ContactGroupView() {
     <Layout>
       <div>ContactGroupView</div>
     </Layout>
-  )
+  );
 }

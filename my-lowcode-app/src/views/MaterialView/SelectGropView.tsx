@@ -34,13 +34,13 @@ export default function SelectGropView() {
           <Col span={12} key={item.to}>
             <NavLink
               to={item.to}
-              style={({isActive})=>({
+              style={({ isActive }) => ({
                 display: 'block',
                 width: '100%',
                 textAlign: 'center',
                 padding: '4px 0',
                 borderRadius: 'var(--border-radius-base)',
-                backgroundColor: isActive?'var(--primary-color)':'var(--info-color)',
+                backgroundColor: isActive ? 'var(--primary-color)' : 'var(--info-color)',
                 color: '#fff',
               })}
             >

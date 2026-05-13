@@ -64,4 +64,3 @@ src/
 - 类型定义优先使用 interface，必要时使用 type
 - SCSS 变量统一放在 `variables.scss` 中管理
 
-##

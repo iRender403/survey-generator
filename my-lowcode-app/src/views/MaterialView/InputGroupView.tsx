@@ -5,5 +5,5 @@ export default function InputGroupView() {
     <Layout>
       <div>InputGroupView</div>
     </Layout>
-  )
+  );
 }
