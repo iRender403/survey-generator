@@ -1,6 +1,6 @@
 import editorType from "@/config/SurveyEditorConfig";
 import SurveyGroupCom from "@/components/Editor/SurveyGroupCom";
-import type { EditItemConfig } from "@/types/editorStatus";
+import type { EditItemConfig } from "@/types/editorStatusType";
 
 export default function SurveyComType() {
     const editorName:EditItemConfig[] = editorType();

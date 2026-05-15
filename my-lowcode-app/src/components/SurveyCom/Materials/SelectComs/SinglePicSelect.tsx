@@ -3,10 +3,10 @@ import { useOutletContext } from 'react-router-dom';
 import { getTextStatus, getStringStatus, getCurrentStatus, getStringStatusByCurrentStatus } from '@/utils';
 import { useMemo, useState } from 'react';
 import { Radio } from 'antd';
-import type { OptionsStatus } from '@/types/editProps';
+import type { OptionsStatus } from '@/types/editPropsType';
 
-export default function SigleSelect() {
-  const singleSelectStatues: OptionsStatus & number = useOutletContext();
+export default function SigleSelect(props) {
+  const singleSelectStatues: OptionsStatus & number = props.status || useOutletContext();
   const [value, setValue] = useState(0);
 
   const computedState = useMemo(

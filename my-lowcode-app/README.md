@@ -42,22 +42,7 @@ pnpm build
 pnpm lint
 ```
 
-## 项目结构
-
-```
-src/
-├── assets/
-│   ├── css/              # 样式文件
-│   │   ├── common.scss   # 公共类
-│   │   ├── index.scss    # 入口样式
-│   │   ├── reset.scss    # 重置样式
-│   │   └── variables.scss # SCSS 变量
-│   └── react.svg
-├── App.tsx               # 主应用组件
-└── main.tsx              # 应用入口
-```
-
-## 开发规范
+##
 
 - 组件使用 PascalCase 命名（如 `SurveyEditor.tsx`）
 - 样式文件使用 kebab-case 命名（如 `survey-editor.scss`）

@@ -1,4 +1,4 @@
-import type { EditItemConfig } from "@/types/editorStatus";
+import type { EditItemConfig } from "@/types/editorStatusType";
 import SurveyGroupItems from "@/components/Editor/SurveyGroupItems";
 import { Col, Row ,Space} from "antd";
 
@@ -22,7 +22,7 @@ export default function SurveyGroupCom(props: SurveyGroupComProps) {
       </Row>
       <Row justify="center" align="middle" gutter={16}>
         {/* 组件标题 */}
-        {props.status.list.map((item, key) => (
+        {props.status.list.map((item , key) => (
           <Col  key={key} span={12}>
               <SurveyGroupItems status={item} />
           </Col>

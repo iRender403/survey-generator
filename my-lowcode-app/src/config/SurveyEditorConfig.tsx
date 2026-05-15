@@ -1,5 +1,5 @@
 import { DashboardOutlined } from '@ant-design/icons';
-import type { EditItemConfig } from '@/types/editorStatus';
+import type { EditItemConfig } from '@/types/editorStatusType';
 
 export default function SurveyEditorConfig():EditItemConfig[] {
   return [

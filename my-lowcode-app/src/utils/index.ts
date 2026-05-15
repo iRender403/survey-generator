@@ -1,10 +1,10 @@
 // 工具库
-import type { TextProps, OptionsProps } from '@/types/editProps';
+import type { TextProps, OptionsProps } from '@/types/editPropsType';
 
 /**
  * 获取文本状态
  */
-export function getTextStatus(props: TextProps) {
+export function getTextStatus(props:TextProps ) {
   return props.status;
 }
 
