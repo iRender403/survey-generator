@@ -1,9 +1,6 @@
 // SurveyGroupItems.tsx
 import type { EditorItem } from "@/types/editorStatusType";
 import type { ComponentStatus } from "@/types/schemaDiscript";
-
-
-
 import { Button } from "antd";
 import { useAppDispatch } from "@/redux/hooks";
 import { addComponentStatus } from "@/redux/editorSlice";
@@ -31,6 +28,7 @@ export default function SurveyGroupItems(props: SurveyGroupItemsProps) {
 
     // 3. 添加到 editor store
     dispatch(addComponentStatus(componentStatus));
+
   }
 
   return (

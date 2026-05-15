@@ -10,6 +10,10 @@ const editorSlice = createSlice({
   name: 'editor',
   initialState,
   reducers: {
+    // 设置当前选中的组件索引
+    setCurrentIndex(state: EditorState, { payload }: { payload: number }) {
+      state.currentIndex = payload;
+    },
     // 设置当前选中的组件状态
     addComponentStatus(state: EditorState, { payload }: { payload: ComponentStatus }) {
       state.comStatus.push(payload);
@@ -18,5 +22,5 @@ const editorSlice = createSlice({
 });
 
 export type EditorState = typeof initialState;
-export const { addComponentStatus } = editorSlice.actions;
+export const { setCurrentIndex, addComponentStatus } = editorSlice.actions;
 export default editorSlice.reducer;

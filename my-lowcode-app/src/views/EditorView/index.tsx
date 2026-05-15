@@ -6,17 +6,13 @@ import RightView from "./RightView";
 
 export default function EditorView() {
   return (
-    <>
+    <div style={{ height: "calc(100vh - 50px)", marginBottom: "20px" }}>
       <Header />
-      <Row 
-      justify="space-between" 
-      style={{ padding: "20px", height: "100vh" }}
-      
-      >
+      <Row justify="space-between" style={{ padding: "20px", height: "100%" }}>
         <Col
           style={{
-            height: "100vh",
-            border:"1px solid #eee"
+            height: "100%",
+            border: "1px solid #eee",
           }}
           flex="0 0 300px"
         >
@@ -24,8 +20,9 @@ export default function EditorView() {
         </Col>
         <Col
           style={{
-            height: "100vh",
-            border:"1px solid #eee"
+            height: "100%",
+            border: "1px solid #eee",
+            overflow: "auto",
           }}
           flex="auto"
         >
@@ -33,14 +30,15 @@ export default function EditorView() {
         </Col>
         <Col
           style={{
-            height: "100vh",
-            border:"1px solid #eee"
+            height: "100%",
+            border: "1px solid #eee",
+            overflow: "auto",
           }}
-          flex="0 0 250px"
+          flex="0 0 350px"
         >
           <RightView />
         </Col>
       </Row>
-    </>
+    </div>
   );
 }

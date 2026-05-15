@@ -1,9 +1,10 @@
 import { editorComponentMap } from '@/config/dufaultStatues/componentMap';
+import type { OptionsStatus, BaseStatus } from "@/types/editPropsType";
 
-export default function EditorPanel({ statues }) {
+export default function EditorPanel({ status }: { status: OptionsStatus | BaseStatus }) {
   return (
     <>
-      {Object.entries(statues).map(([key, value]) => {
+      {Object.entries(status).map(([key, value]) => {
         if (!(value as any).isShow) {
           return null;
         }

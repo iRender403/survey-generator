@@ -1,10 +1,7 @@
-import type React from 'react';
-
 export interface BaseProps {
   id: string;
-  isShown: boolean;
+  isShow: boolean;
   name: string;
-  editCom: React.FC;
 }
 
 export type StringStatusArr = string[];
