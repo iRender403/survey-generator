@@ -1,15 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { defaultStatusMap } from '@/config/dufaultStatues/defaultStatusMap';
 
+const initialState = {
+  currentSelectStatus: 'single-select',
+  com: {
+    'single-select': defaultStatusMap['single-select'](),
+    'single-pic-select': defaultStatusMap['single-pic-select'](),
+  },
+};
+
 const schemaSlice = createSlice({
   name: 'schema',
-  initialState: {
-    currentSelectStatus: 'single-select',
-    com: {
-      'single-select': defaultStatusMap['single-select'](),
-      'single-pic-select': defaultStatusMap['single-pic-select'](),
-    },
-  },
+  initialState,
   reducers: {
     // 设置当前选中的组件状态
     setSelectStatus(state, { payload }) {
@@ -33,6 +35,6 @@ const schemaSlice = createSlice({
     },
   },
 });
-
+export type SchemaState = typeof initialState;
 export const { setSelectStatus, setTextStatue, setPicOptions, setOptions, setTitle } = schemaSlice.actions;
 export default schemaSlice.reducer;

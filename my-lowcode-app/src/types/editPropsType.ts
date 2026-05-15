@@ -8,7 +8,9 @@ export interface BaseProps {
 }
 
 export type StringStatusArr = string[];
+
 export type ValueStatusArr = Array<{ value: string; status: string }>;
+
 export type PicTitleDescStatusArr = Array<{
   picTitle: string;
   picDesc: string;
