@@ -4,3 +4,14 @@
 4. &#x20;│ ▼ 2. 沉淀元认知（在 README 或 NOTES.md 记 3 句话）&#x20;
 5. ├── 我过去的盲区是什么？ ├── 正确的底层逻辑是什么？ └── 以后遇到这类问题，我的通用排查步骤是什么？
 
+<br />
+
+1. 补全选择题家族 — MultiSelect、OptionSelect、MultiPicSelect 三个组件本质上和 SingleSelect 共享同一套 property editor
+   体系（你已经有完整的 editors 了），工作量不大，但能立刻让组件市场"有货"
+2. 补全 EditorLeftView 的 Outline — 现在是个空壳。大纲树是低代码编辑器的标配，有了它，用户才能在复杂问卷中导航。这本身
+   就是低代码核心体验的一部分，不是外挂功能
+3. 完善组件注册体系 — 你的 componentMap + defaultStatusMap
+   已经有雏形了，但每种新组件都需要手动在多处注册（map、defaultStatus、routers、slice
+   actions）。如果能收敛到一个统一的注册入口，后续扩展成本会大幅下降
+4. 补充问卷级别的配置 — 现在只有组件级别，没有问卷标题、描述、开始/结束设置等。这是"最小闭环"里缺的一环
+

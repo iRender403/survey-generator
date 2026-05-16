@@ -82,7 +82,7 @@ export default function Layout({ children }) {
         }}
       >
         <UpdateStatusContext.Provider value={updateStatus}>
-          <EditorPanel statues={singleSelectStatues} />
+          <EditorPanel status={singleSelectStatues} />
         </UpdateStatusContext.Provider>
       </Col>
     </Row>

@@ -90,7 +90,7 @@ export default function index() {
           ))}
         </nav>
         {/* 路由出口 */}
-        <div style={{ flex: 1, backgroundColor: 'var(--white-color)', height: '100%', minHeight: '1500px' }}>
+        <div style={{ flex: 1, backgroundColor: 'var(--white-color)', height: '100%' }}>
           <Outlet />
         </div>
       </div>

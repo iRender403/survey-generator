@@ -1,10 +1,8 @@
-import { Button, Table, Space, Typography } from "antd";
+import { Button, Table, Space, Typography, Row, Col } from "antd";
 import { PlusOutlined, AppstoreOutlined, EyeOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
 import { useNavigate } from "react-router-dom";
 import "./assets/css/common.scss";
-import DragableTodoList from "./__test__/DragableTodoList";
-import SortableList from "./__test__/Step2_SortableList";
 
 const { Title } = Typography;
 
@@ -72,29 +70,23 @@ const data: SurveyData[] = [
 ];
 
 export default function App() {
-  
-  // return (
-  //   <DragableTodoList />
-  // );
   const navigate = useNavigate();
   return (
-    <div className="mc border-box" style={{ maxWidth: 1400 }}>
-      <div className="pt-40 pr-60 pb-40 pl-60">
-        <Title level={2} className="text-center mb-40">
-          问卷生成系统
-        </Title>
+    <div style={{ padding: "24px" }}>
+      <Title level={2} style={{ textAlign: "center", marginBottom: "24px" }}>
+        问卷生成系统
+      </Title>
 
-        <Space className="mb-24">
-          <Button type="primary" icon={<PlusOutlined />} onClick={() => navigate('/editor')}>
-            创建问卷
-          </Button>
-          <Button icon={<AppstoreOutlined />} onClick={() => navigate('/material')}>
-            组件市场
-          </Button>
-        </Space>
-
-        <Table columns={columns} dataSource={data} bordered pagination={false} />
+      <div style={{ marginBottom: "16px" }}>
+        <Button type="primary" icon={<PlusOutlined />} onClick={() => navigate("/editor")} style={{ marginRight: "8px" }}>
+          创建问卷
+        </Button>
+        <Button icon={<AppstoreOutlined />} onClick={() => navigate("/material")}>
+          组件市场
+        </Button>
       </div>
+
+      <Table columns={columns} dataSource={data} bordered pagination={false} />
     </div>
   );
 }
