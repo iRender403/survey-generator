@@ -22,7 +22,7 @@ export default function SurveyGroupItems(props: SurveyGroupItemsProps) {
       console.error(`未知的组件类型: ${props.status.materialName}`);
       return;
     }
-
+    
     // 2. 调用函数生成默认状态
     const componentStatus:ComponentStatus = getDefaultStatus();
 

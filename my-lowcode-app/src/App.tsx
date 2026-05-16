@@ -1,8 +1,10 @@
-import { Button, Table, Space, Typography } from 'antd';
-import { PlusOutlined, AppstoreOutlined, EyeOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
-import type { ColumnsType } from 'antd/es/table';
-import { useNavigate } from 'react-router-dom';
-import './assets/css/common.scss';
+import { Button, Table, Space, Typography } from "antd";
+import { PlusOutlined, AppstoreOutlined, EyeOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import type { ColumnsType } from "antd/es/table";
+import { useNavigate } from "react-router-dom";
+import "./assets/css/common.scss";
+import DragableTodoList from "./__test__/DragableTodoList";
+import SortableList from "./__test__/Step2_SortableList";
 
 const { Title } = Typography;
 
@@ -16,32 +18,32 @@ interface SurveyData {
 
 const columns: ColumnsType<SurveyData> = [
   {
-    title: '创建日期',
-    dataIndex: 'createDate',
-    key: 'createDate',
+    title: "创建日期",
+    dataIndex: "createDate",
+    key: "createDate",
     width: 150,
   },
   {
-    title: '问卷标题',
-    dataIndex: 'title',
-    key: 'title',
+    title: "问卷标题",
+    dataIndex: "title",
+    key: "title",
   },
   {
-    title: '题目数',
-    dataIndex: 'questionCount',
-    key: 'questionCount',
+    title: "题目数",
+    dataIndex: "questionCount",
+    key: "questionCount",
     width: 100,
-    align: 'center',
+    align: "center",
   },
   {
-    title: '最近更新日期',
-    dataIndex: 'updateDate',
-    key: 'updateDate',
+    title: "最近更新日期",
+    dataIndex: "updateDate",
+    key: "updateDate",
     width: 150,
   },
   {
-    title: '操作',
-    key: 'action',
+    title: "操作",
+    key: "action",
     width: 200,
     render: (_, record) => (
       <Space size="middle">
@@ -61,17 +63,20 @@ const columns: ColumnsType<SurveyData> = [
 
 const data: SurveyData[] = [
   {
-    key: '1',
-    createDate: '2026/05/04\n15:25:20',
-    title: 'test',
+    key: "1",
+    createDate: "2026/05/04\n15:25:20",
+    title: "test",
     questionCount: 8,
-    updateDate: '2026/05/04\n15:25:20',
+    updateDate: "2026/05/04\n15:25:20",
   },
 ];
 
 export default function App() {
+  
+  // return (
+  //   <DragableTodoList />
+  // );
   const navigate = useNavigate();
-
   return (
     <div className="mc border-box" style={{ maxWidth: 1400 }}>
       <div className="pt-40 pr-60 pb-40 pl-60">

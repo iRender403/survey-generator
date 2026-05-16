@@ -1,9 +1,15 @@
 // views/EditorView/CenterView.tsx
+import { useState } from "react";
 import { useAppSelector } from "@/redux/hooks";
 import { materialComponentMap } from "@/config/dufaultStatues/componentMap";
-import { setCurrentIndex } from "@/redux/editorSlice";
-import type { ComponentStatus } from "@/types/schemaDiscript";
+import { setCurrentIndex, reorderComponents } from "@/redux/editorSlice";
 import { useAppDispatch } from "@/redux/hooks";
+import DraggableCom from "@/hooks/DraggableCom";
+
+import { DndContext, closestCenter, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
+import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
+
+import type { ComponentStatus } from "@/types/schemaDiscript";
 
 export default function CenterView() {
   const dispatch = useAppDispatch();
@@ -12,25 +18,65 @@ export default function CenterView() {
 
   // 修改编辑器画布中当前选中的组件索引
   function clickHanle(index: number) {
+    console.log("点击了组件", index);
     dispatch(setCurrentIndex(index));
   }
 
-  return (
-    <div style={{ padding: "20px" }}>
-      {comStatus.map((component, index) => {
-        // 根据 type 获取对应的渲染组件
-        const MaterialComponent = materialComponentMap[component.type];
+  const [activeId, setActiveId] = useState<string | null>(null);
+  // 设置拖拽触发条件
+  // 配置传感器 - 定义如何触发拖拽
+  const sensors = useSensors(
+    // 鼠标/触摸传感器
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        // 需要移动 8px 才算开始拖拽（防止误触）
+        distance: 8,
+      },
+    })
+  );
 
-        if (!MaterialComponent) {
-          console.warn(`未知的组件类型: ${component.type}`);
-          return null;
+  return (
+    <DndContext
+      sensors={sensors}
+      collisionDetection={closestCenter}
+      onDragStart={(event) => {
+        setActiveId(event.active.id as string);
+      }}
+      onDragEnd={(event) => {
+        const oldIndex = comStatus.findIndex((item) => item.id === activeId);
+        const newIndex = comStatus.findIndex((item) => item.id === event.over?.id);
+        setActiveId(null);
+        if (oldIndex !== -1 && newIndex !== -1) {
+          dispatch(reorderComponents({ oldIndex, newIndex }));
         }
-        return (
-          <div key={component.id} onClick={() => clickHanle(index)} className="component-container" style={{ marginBottom: "20px" }}>
-            <MaterialComponent status={component.status} />
-          </div>
-        );
-      })}
-    </div>
+      }}
+    >
+      <SortableContext items={comStatus.map((t) => t.id)} strategy={verticalListSortingStrategy}>
+        <div style={{ padding: "20px" }}>
+          {comStatus.map((component, index) => {
+            // 根据 type 获取对应的渲染组件
+            const MaterialComponent = materialComponentMap[component.type];
+
+            if (!MaterialComponent) {
+              console.warn(`未知的组件类型: ${component.type}`);
+              return null;
+            }
+            return (
+              <div
+                key={component.id}
+                onClick={() => {
+                  clickHanle(index);
+                }}
+                style={{ marginBottom: "20px" }}
+              >
+                <DraggableCom id={component.id}>
+                  <MaterialComponent status={component.status} />
+                </DraggableCom>
+              </div>
+            );
+          })}
+        </div>
+      </SortableContext>
+    </DndContext>
   );
 }

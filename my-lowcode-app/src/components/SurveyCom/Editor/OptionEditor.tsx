@@ -2,13 +2,26 @@ import { Button, Input } from 'antd';
 import { PlusOutlined, MinusCircleOutlined } from '@ant-design/icons';
 import { useContext } from 'react';
 import { UpdateStatusContext } from '@/views/MaterialView/Layout';
-export default function OptionEditor(props) {
-  const { type, status } = props as any;
+
+interface OptionEditorProps {
+  type: string;
+  status: any;
+  onUpdate?: (type: string, value: string[]) => void;
+}
+
+export default function OptionEditor(props: OptionEditorProps) {
+  const { type, status, onUpdate } = props;
   const options = [...status.status];
   const updateStatus = useContext(UpdateStatusContext);
-  function updateOptions(newOptions: string[]) {
-    updateStatus(type, newOptions);
-  }
+
+  const updateOptions = (newOptions: string[]) => {
+    if (onUpdate) {
+      onUpdate(type, newOptions);
+    } else if (updateStatus) {
+      updateStatus(type, newOptions);
+    }
+  };
+
   return (
     <div>
       {/* 标题和添加按钮*/}

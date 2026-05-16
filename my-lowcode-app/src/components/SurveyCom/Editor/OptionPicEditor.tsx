@@ -11,30 +11,39 @@ interface PicOption {
 }
 
 interface OptionPicEditorProps {
+  type: string;
   status: {
     status: PicOption[];
   };
+  onUpdate?: (type: string, value: PicOption[]) => void;
 }
 
 export default function OptionPicEditor(props: OptionPicEditorProps) {
-  const { status } = props;
+  const { type, status, onUpdate } = props;
   const options = status.status;
   const updateStatus = useContext(UpdateStatusContext);
 
   const [localOptions, setLocalOptions] = useState<PicOption[]>(options);
 
+  const handleUpdateOptions = (newOptions: PicOption[]) => {
+    setLocalOptions(newOptions);
+    if (onUpdate) {
+      onUpdate(type, newOptions);
+    } else if (updateStatus) {
+      updateStatus(type, newOptions);
+    }
+  };
+
   const handleTitleChange = (index: number, value: string) => {
     const newOptions = [...localOptions];
     newOptions[index] = { ...newOptions[index], picTitle: value };
-    setLocalOptions(newOptions);
-    updateStatus?.('picOptions', newOptions);
+    handleUpdateOptions(newOptions);
   };
 
   const handleDescChange = (index: number, value: string) => {
     const newOptions = [...localOptions];
     newOptions[index] = { ...newOptions[index], picDesc: value };
-    setLocalOptions(newOptions);
-    updateStatus?.('picOptions', newOptions);
+    handleUpdateOptions(newOptions);
   };
 
   const handleAddOption = () => {
@@ -46,8 +55,7 @@ export default function OptionPicEditor(props: OptionPicEditorProps) {
         value: '',
       },
     ];
-    setLocalOptions(newOptions);
-    updateStatus?.('picOptions', newOptions);
+    handleUpdateOptions(newOptions);
   };
 
   const handleRemoveOption = (index: number) => {
@@ -56,8 +64,7 @@ export default function OptionPicEditor(props: OptionPicEditorProps) {
       return;
     }
     const newOptions = localOptions.filter((_, i) => i !== index);
-    setLocalOptions(newOptions);
-    updateStatus?.('picOptions', newOptions);
+    handleUpdateOptions(newOptions);
   };
 
   const uploadProps: UploadProps = {
