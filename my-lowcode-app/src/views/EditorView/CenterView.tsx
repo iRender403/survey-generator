@@ -2,7 +2,8 @@
 import { useState } from "react";
 import { useAppSelector } from "@/redux/hooks";
 import { materialComponentMap } from "@/config/dufaultStatues/componentMap";
-import { setCurrentIndex, reorderComponents } from "@/redux/editorSlice";
+import { setCurrentIndex, reorderComponents, removeComponent } from "@/redux/editorSlice";
+import { DeleteOutlined } from "@ant-design/icons";
 import { useAppDispatch } from "@/redux/hooks";
 import DraggableCom from "@/hooks/DraggableCom";
 
@@ -67,11 +68,34 @@ export default function CenterView() {
                 onClick={() => {
                   clickHanle(index);
                 }}
-                style={{ marginBottom: "20px" }}
+                style={{ marginBottom: "20px", position: "relative" }}
               >
                 <DraggableCom id={component.id}>
                   <MaterialComponent status={component.status} />
                 </DraggableCom>
+                <DeleteOutlined
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    dispatch(removeComponent({ id: component.id }));
+                  }}
+                  style={{
+                    position: "absolute",
+                    top: "8px",
+                    right: "8px",
+                    fontSize: "18px",
+                    color: "#ff4d4f",
+                    cursor: "pointer",
+                    padding: "4px",
+                    borderRadius: "4px",
+                    transition: "background-color 0.2s",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.backgroundColor = "#fff2f0";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.backgroundColor = "transparent";
+                  }}
+                />
               </div>
             );
           })}

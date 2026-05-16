@@ -46,9 +46,26 @@ const editorSlice = createSlice({
         state.comStatus.splice(newIndex, 0, movedItem);
       }
     },
+    // 删除组件
+    removeComponent(
+      state: EditorState,
+      { payload }: { payload: { id: string } }
+    ) {
+      const index = state.comStatus.findIndex((item) => item.id === payload.id);
+      if (index !== -1) {
+        state.comStatus.splice(index, 1);
+        // 如果删除的是当前选中的组件，重置 currentIndex
+        if (state.currentIndex === index) {
+          state.currentIndex = -1;
+        } else if (state.currentIndex > index) {
+          // 如果删除的组件在当前选中组件之前，需要调整 currentIndex
+          state.currentIndex -= 1;
+        }
+      }
+    },
   },
 });
 
 export type EditorState = typeof initialState;
-export const { setCurrentIndex, addComponentStatus, updateComponentStatus, reorderComponents } = editorSlice.actions;
+export const { setCurrentIndex, addComponentStatus, updateComponentStatus, reorderComponents, removeComponent } = editorSlice.actions;
 export default editorSlice.reducer;

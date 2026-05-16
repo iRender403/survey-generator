@@ -9,7 +9,7 @@ export default function EditorView() {
 
       <div style={{ height: "calc(100vh - 50px)", marginBottom: "20px" }}>
         <Header />
-        <Row justify="space-between" style={{ padding: "20px", height: "100%" }}>
+        <Row justify="space-between" wrap={false} style={{ padding: "20px", height: "100%" }}>
           <Col
             style={{
               height: "100%",
