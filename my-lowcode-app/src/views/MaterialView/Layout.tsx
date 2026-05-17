@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { useAppSelector } from '@/redux/hooks';
 import EditorPanel from '@/components/SurveyCom/Editor/EditorPanel';
 import { createContext } from 'react';
-import { setTextStatue, setPicOptions, setOptions, setTitle } from '@/redux/schemaSlice';
+import { setTextStatue, setPicOptions, setOptions, setTitle, setContent } from '@/redux/schemaSlice';
 import { useAppDispatch } from '@/redux/hooks';
 
 type UpdateStatusType = (type: string, payload: string | number | object) => void;
@@ -32,6 +32,9 @@ export default function Layout({ children }) {
         break;
       case 'title':
         dispatch(setTitle(payload));
+        break;
+      case 'content':
+        dispatch(setContent(payload));
         break;
       default:
         break;

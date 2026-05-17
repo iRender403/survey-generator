@@ -6,6 +6,8 @@ const initialState = {
   com: {
     'single-select': defaultStatusMap['single-select'](),
     'single-pic-select': defaultStatusMap['single-pic-select'](),
+    'multi-select': defaultStatusMap['multi-select'](),
+    'input': defaultStatusMap['input'](),
   },
 };
 
@@ -33,8 +35,12 @@ const schemaSlice = createSlice({
     setTitle(state, { payload }) {
       state.com[state.currentSelectStatus].status.title.status = payload;
     },
+    // 更新内容状态
+    setContent(state, { payload }) {
+      state.com[state.currentSelectStatus].status.content.status = payload;
+    },
   },
 });
 export type SchemaState = typeof initialState;
-export const { setSelectStatus, setTextStatue, setPicOptions, setOptions, setTitle } = schemaSlice.actions;
+export const { setSelectStatus, setTextStatue, setPicOptions, setOptions, setTitle, setContent } = schemaSlice.actions;
 export default schemaSlice.reducer;

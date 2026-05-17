@@ -3,6 +3,7 @@ import MultiSelect from '@/components/SurveyCom/Materials/SelectComs/MultiSelect
 import OptionSelect from '@/components/SurveyCom/Materials/SelectComs/OptionSelect';
 import SinglePicSelect from '@/components/SurveyCom/Materials/SelectComs/SinglePicSelect';
 import MultiPicSelect from '@/components/SurveyCom/Materials/SelectComs/MultiPicSelect';
+import Input from '@/components/SurveyCom/Materials/InputComs/Input';
 import TitleEditor from '@/components/SurveyCom/Editor/TitleEditor';
 import DescEditor from '@/components/SurveyCom/Editor/DescEditor';
 import OptionEditor from '@/components/SurveyCom/Editor/OptionEditor';
@@ -19,6 +20,7 @@ export const materialComponentMap = {
   'option-select': OptionSelect,
   'single-pic-select': SinglePicSelect,
   'multi-pic-select': MultiPicSelect,
+  'input': Input,
 } as const;
 
 export const editorComponentMap = {

@@ -20,7 +20,7 @@ export default function SurveyGroupCom(props: SurveyGroupComProps) {
             {props.status.title}
         </Col>
       </Row>
-      <Row justify="center" align="middle" gutter={16}>
+      <Row gutter={[16, 16]}>
         {/* 组件标题 */}
         {props.status.list.map((item , key) => (
           <Col  key={key} span={12}>

@@ -43,4 +43,9 @@ export interface OptionsStatus extends BaseStatus {
   options: OptionsProps;
 }
 
+// Input 组件状态：基础类型 + content
+export interface InputStatus extends BaseStatus {
+  content: TextProps;
+}
+
 

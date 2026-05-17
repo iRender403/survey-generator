@@ -1,48 +1,49 @@
-import { createBrowserRouter, type RouteObject, Navigate } from 'react-router-dom';
-import EditorView from '@/views/EditorView';
-import MaterialView from '@/views/MaterialView';
-import AdvancedGroupView from '@/views/MaterialView/AdvancedGroupView';
-import InputGroupView from '@/views/MaterialView/InputGroupView';
-import ContactGroupView from '@/views/MaterialView/ContactGroupView';
-import SelectGropView from '@/views/MaterialView/SelectGropView';
-import NoteGroupView from '@/views/MaterialView/NoteGroupView';
-import PersonalInfoGroupView from '@/views/MaterialView/PersonalInfoGroupView';
-import SinglePicSelect from '@/components/SurveyCom/Materials/SelectComs/SingleSelect';
-import MultiPicSelect from '@/components/SurveyCom/Materials/SelectComs/MultiPicSelect';
-import OptionSelect from '@/components/SurveyCom/Materials/SelectComs/OptionSelect';
-import MultiSelect from '@/components/SurveyCom/Materials/SelectComs/MultiSelect';
-import SingleSelect from '@/components/SurveyCom/Materials/SelectComs/SingleSelect';
-import SurveyComType from '@/views/EditorView/EditorLeftView/SurveyComType';
-import Outline from '@/views/EditorView/EditorLeftView/Outline';
+import { createBrowserRouter, type RouteObject, Navigate } from "react-router-dom";
+import EditorView from "@/views/EditorView";
+import MaterialView from "@/views/MaterialView";
+import AdvancedGroupView from "@/views/MaterialView/AdvancedGroupView";
+import InputGroupView from "@/views/MaterialView/InputGroupView";
+import ContactGroupView from "@/views/MaterialView/ContactGroupView";
+import SelectGropView from "@/views/MaterialView/SelectGropView";
+import NoteGroupView from "@/views/MaterialView/NoteGroupView";
+import PersonalInfoGroupView from "@/views/MaterialView/PersonalInfoGroupView";
+import SinglePicSelect from "@/components/SurveyCom/Materials/SelectComs/SingleSelect";
+import MultiPicSelect from "@/components/SurveyCom/Materials/SelectComs/MultiPicSelect";
+import OptionSelect from "@/components/SurveyCom/Materials/SelectComs/OptionSelect";
+import MultiSelect from "@/components/SurveyCom/Materials/SelectComs/MultiSelect";
+import SingleSelect from "@/components/SurveyCom/Materials/SelectComs/SingleSelect";
+import SurveyComType from "@/views/EditorView/EditorLeftView/SurveyComType";
+import Outline from "@/views/EditorView/EditorLeftView/Outline";
+import Input from "@/components/SurveyCom/Materials/InputComs/Input";
 
-import App from '@/App';
-import { store } from '@/redux/store';
-import { setSelectStatus } from '@/redux/schemaSlice';
+import App from "@/App";
+import { store } from "@/redux/store";
+import { setSelectStatus } from "@/redux/schemaSlice";
 
 const capturePathLoader = ({ request }) => {
   const url = new URL(request.url);
   const targetPath = url.pathname; // 例如 "/dashboard"
-  const selectStatus = targetPath.split('/').pop() || 'single-select';
+  const selectStatus = targetPath.split("/").pop();
   // 同步派发到 Redux
   store.dispatch(setSelectStatus(selectStatus));
   return null; // 这个 loader 不需要给组件返回数据
 };
 const routes: RouteObject[] = [
   {
-    path: '/',
+    path: "/",
     element: <App />,
   },
   // 编辑器
   {
-    path: '/editor',
+    path: "/editor",
     element: <EditorView />,
     children: [
       {
-        path: 'type',
+        path: "type",
         element: <SurveyComType />,
       },
       {
-        path: 'outline',
+        path: "outline",
         element: <Outline />,
       },
       {
@@ -53,7 +54,7 @@ const routes: RouteObject[] = [
   },
   // 组件市场
   {
-    path: '/material',
+    path: "/material",
     element: <MaterialView />,
 
     children: [
@@ -63,22 +64,33 @@ const routes: RouteObject[] = [
       },
       // 高级选项
       {
-        path: 'advanced',
+        path: "advanced",
         element: <AdvancedGroupView />,
       },
       // 输入框
       {
-        path: 'input',
+        path: "input",
         element: <InputGroupView />,
+        children: [
+          {
+            index: true,
+            element: <Navigate to="input" replace />,
+          },
+          {
+            path: "input",
+            loader: capturePathLoader,
+            element: <Input />,
+          },
+        ],
       },
       // 联系人
       {
-        path: 'contact',
+        path: "contact",
         element: <ContactGroupView />,
       },
       // 选择框
       {
-        path: 'select',
+        path: "select",
         element: <SelectGropView />,
         children: [
           {
@@ -86,27 +98,27 @@ const routes: RouteObject[] = [
             element: <Navigate to="single-select" replace />,
           },
           {
-            path: 'single-select',
+            path: "single-select",
             element: <SingleSelect />,
             loader: capturePathLoader,
           },
           {
-            path: 'multi-select',
+            path: "multi-select",
             element: <MultiSelect />,
             loader: capturePathLoader,
           },
           {
-            path: 'option-select',
+            path: "option-select",
             element: <OptionSelect />,
             loader: capturePathLoader,
           },
           {
-            path: 'single-pic-select',
+            path: "single-pic-select",
             element: <SinglePicSelect />,
             loader: capturePathLoader,
           },
           {
-            path: 'multi-pic-select',
+            path: "multi-pic-select",
             element: <MultiPicSelect />,
             loader: capturePathLoader,
           },
@@ -114,12 +126,12 @@ const routes: RouteObject[] = [
       },
       // 个人信息
       {
-        path: 'personalinfo',
+        path: "personalinfo",
         element: <PersonalInfoGroupView />,
       },
       // 备注
       {
-        path: 'note',
+        path: "note",
         element: <NoteGroupView />,
       },
     ],
