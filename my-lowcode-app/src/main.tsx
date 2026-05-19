@@ -6,6 +6,10 @@ import { store } from './redux/store';
 import router from './routers';
 import '@/assets/css/index.scss';
 
+// 初始化追踪系统
+import { initTrace } from '@/utils/trace';
+initTrace();
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
