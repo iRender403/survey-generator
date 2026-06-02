@@ -23,7 +23,7 @@
  *    // 通用追踪
  *    trace('material', '组件被点击', { id: 1 });
  *    
- *    // 模块追踪器（推荐）
+ *    // 模块追踪器
  *    materialTracer.log('组件被点击', { id: 1 });
  *    
  *    // React Hook

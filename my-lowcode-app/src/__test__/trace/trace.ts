@@ -1,6 +1,5 @@
 /**
  * 开发调试追踪系统
- * 轻量级、模块化、可开关的数据流追踪工具
  */
 
 // 追踪模块类型
@@ -17,11 +16,11 @@ export type TraceLevel = 'debug' | 'info' | 'warn' | 'error';
 
 // 追踪配置接口
 interface TraceConfig {
-  enabled: boolean;
-  modules: TraceModule[];
-  level: TraceLevel;
-  showTimestamp: boolean;
-  groupByModule: boolean;
+  enabled: boolean;           // 是否使用开关
+  modules: TraceModule[];     // 追踪模块
+  level: TraceLevel;          // 追踪级别
+  showTimestamp: boolean;     // 是否显示时间戳
+  groupByModule: boolean;     // 是否按模块分组输出
 }
 
 // 默认配置
@@ -36,7 +35,7 @@ const defaultConfig: TraceConfig = {
 // 运行时配置
 let currentConfig: TraceConfig = { ...defaultConfig };
 
-// 模块名称映射（用于显示）
+// 模块名称映射
 const moduleNames: Record<TraceModule, string> = {
   material: '组件市场',
   editor: '编辑器画布',
@@ -63,7 +62,7 @@ export function initTrace(): void {
   const envEnabled = import.meta.env.VITE_TRACE_ENABLED === 'true';
   const envModules = (import.meta.env.VITE_TRACE_MODULES || '').split(',').filter(Boolean) as TraceModule[];
 
-  // 2. 从 URL 参数读取（优先级更高）
+  // 2. 从 URL 参数读取
   const urlParams = new URLSearchParams(window.location.search);
   const urlTrace = urlParams.get('trace');
 
@@ -141,9 +140,9 @@ export function trace(
   const prefix = `${timestamp}[${moduleName}]`;
 
   // 根据级别使用不同的 console 方法
-  const consoleMethod = level === 'error' ? console.error :
-                       level === 'warn' ? console.warn :
-                       level === 'info' ? console.info : console.log;
+  const consoleMethod = level === 'error' ? console.error
+    : level === 'warn' ? console.warn
+    : level === 'info' ? console.info : console.log;
 
   // 样式
   const color = levelColors[level];
@@ -168,7 +167,7 @@ export function trace(
 }
 
 /**
- * 追踪渲染（专用函数）
+ * 追踪渲染
  * @param componentName 组件名
  * @param renderCount 渲染次数
  * @param extraData 额外数据

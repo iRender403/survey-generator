@@ -12,41 +12,26 @@ const editorSlice = createSlice({
   reducers: {
     // 设置当前选中的组件索引
     setCurrentIndex(state: EditorState, { payload }: { payload: number }) {
-      console.log('[埋点][editorSlice] setCurrentIndex 执行, 新索引:', payload);
       state.currentIndex = payload;
-      console.log('[埋点][editorSlice] 当前状态 - currentIndex:', state.currentIndex, 'comStatus长度:', state.comStatus.length);
     },
     // 设置当前选中的组件状态
-    addComponentStatus(state: EditorState, { payload }: { payload: ComponentStatus }) {
-      console.log('[埋点][editorSlice] addComponentStatus 执行');
-      console.log('[埋点][editorSlice] 添加前 comStatus 长度:', state.comStatus.length);
+    addComponentStatus(state: EditorState, { payload }: { payload: ComponentStatus }) {  
       state.comStatus.push(payload);
-      console.log('[埋点][editorSlice] 添加后 comStatus 长度:', state.comStatus.length);
-      console.log('[埋点][editorSlice] 添加的组件:', payload.type, payload.name);
     },
     // 更新当前选中组件的某个状态字段
     updateComponentStatus(
       state: EditorState,
       { payload }: { payload: { type: string; value: any } }
     ) {
-      console.log('[埋点][editorSlice] updateComponentStatus 执行');
-      console.log('[埋点][editorSlice] 更新类型:', payload.type, '更新值:', payload.value);
-      console.log('[埋点][editorSlice] 当前索引:', state.currentIndex);
       
       if (state.currentIndex >= 0 && state.currentIndex < state.comStatus.length) {
         const currentComponent = state.comStatus[state.currentIndex];
-        console.log('[埋点][editorSlice] 当前组件:', currentComponent.type, currentComponent.name);
         
         if (currentComponent.status[payload.type as keyof typeof currentComponent.status]) {
           const oldValue = (currentComponent.status[payload.type as keyof typeof currentComponent.status] as any).status;
           (currentComponent.status[payload.type as keyof typeof currentComponent.status] as any).status = payload.value;
-          console.log('[埋点][editorSlice] 更新成功 - 旧值:', oldValue, '新值:', payload.value);
-        } else {
-          console.warn('[埋点][editorSlice] 警告: 组件状态字段不存在:', payload.type);
-        }
-      } else {
-        console.warn('[埋点][editorSlice] 警告: 当前索引无效:', state.currentIndex);
-      }
+        } 
+      } 
     },
     // 重新排序组件列表
     reorderComponents(
